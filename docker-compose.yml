@@ -15,6 +15,13 @@ services:
     working_dir:
       /workspace
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: 'db'
+    ports:
+    - '127.0.0.1:8080:80'
+
   db:
     build: ./docker/mysql
     volumes:
