@@ -17,6 +17,22 @@ RUN apk --no-cache update \
   openssl \
   && cp /usr/share/zoneinfo/Japan /etc/localtime
 
+RUN apk --no-cache update \
+  && apk --no-cache upgrade \
+  && apk --no-cache add \
+  oniguruma-dev \
+  curl-dev \
+  freetype-dev \
+  libjpeg-turbo-dev \
+  libpng-dev \
+  libzip-dev \
+  libxml2-dev \
+  pcre-dev \
+  && docker-php-source extract \
+  && git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis \
+  && docker-php-ext-configure zip \
+  && docker-php-ext-install -j$(nproc) mbstring curl xml zip pdo pdo_mysql mysqli gd iconv pcntl sysvshm sysvsem sysvmsg shmop opcache redis
+
 COPY ./php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /workspace
