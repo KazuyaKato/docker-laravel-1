@@ -13,20 +13,20 @@
 
 ### サービスの構築
 ```
-$ docker-compose build
+docker-compose build
 ```
 
 ### コンテナの作成と立ち上げ
 ```
-$ docker-compose up
+docker-compose up -d
 ```
 
 ### アプリのコンテナに接続
 ```
-$ docker-compose exec app bash
+docker-compose exec app bash
 ```
 
 ### Laravel6系インストールコマンド
 ```
-$ composer create-project --prefer-dist "laravel/laravel=6.*" .
+composer create-project --prefer-dist "laravel/laravel=6.*" .
 ```
